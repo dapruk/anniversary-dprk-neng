@@ -1,12 +1,31 @@
-html {
-  box-sizing: border-box;
+/* =========================
+   AllBoothNeng Theme Tokens
+   ========================= */
+:root {
+  --color-bg:        #ffffff;
+  --color-foreground:#1f2937;
+  --color-primary:   #8276a3; /* lilac */
+  --color-accent:    #d8b4fe; /* pastel purple */
+  --color-card:      #ffffff;
+  --color-muted:     #f6f6f9;
+
+  --border-muted:    #e7e5ef; /* subtle lilac-tinted border */
+  --shadow-soft:     0 12px 28px rgba(17, 12, 34, 0.08);
+  --radius-xxl:      1.5rem; /* ~ rounded-3xl */
 }
+
+/* base */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
 
 body {
   margin: 0;
   font-family: "Work Sans", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-foreground);
 }
 
+/* container as a card */
 .container {
   height: 100vh;
   width: 100vh;
@@ -15,12 +34,14 @@ body {
   visibility: hidden;
   position: relative;
   overflow: hidden;
+
+  background: var(--color-card);
+  border-radius: var(--radius-xxl);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-muted);
 }
 
-.container div.six {
-  top: 10vh;
-  z-index: 1;
-}
+.container div.six { top: 10vh; z-index: 1; }
 
 .container div.seven,
 .container div.eight {
@@ -37,52 +58,38 @@ body {
   top: 20vh;
 }
 
-.one {
-  font-size: 4.5rem;
-}
+/* headings/typography accents */
+.one { font-size: 4.5rem; color: var(--color-primary); }
+.one > img { vertical-align: middle; margin-bottom: 10px; max-width: 100%; height: auto; }
 
-.one > img {
-  vertical-align: middle;
-  margin-bottom: 10px;
-  max-width: 100%;
-  height: auto;
-}
+.two { font-size: 1.2rem; font-weight: lighter; color: var(--color-foreground); }
+.three { font-size: 3rem; color: var(--color-primary); }
 
-.two {
-  font-size: 1.2rem;
-  font-weight: lighter;
-}
-
-.three {
-  font-size: 3rem;
-}
-
+/* text box styled like a brand card */
 .four .text-box {
   width: 600px;
   margin: 0 auto;
-  border: 3px solid #aaa;
-  border-radius: 5px;
-  padding: 10px;
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius-xxl);
+  padding: 16px;
   position: relative;
+  background: var(--color-card);
+  box-shadow: var(--shadow-soft);
 }
 
-.text-box p {
-  margin: 0;
-  text-align: left;
-}
+.text-box p { margin: 0; text-align: left; }
+.text-box span { visibility: hidden; }
 
-.text-box span {
-  visibility: hidden;
-}
-
+/* primary button chip */
 .text-box .fake-btn {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
-  color: #fff;
-  background-color: rgb(21, 161, 237);
-  padding: 5px 8px;
-  border-radius: 3px;
+  right: 10px;
+  bottom: 10px;
+  color: var(--color-bg);
+  background-color: var(--color-primary);
+  padding: 6px 10px;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-soft);
 }
 
 .five p {
@@ -90,63 +97,44 @@ body {
   position: absolute;
   left: 0;
   right: 0;
+  color: var(--color-foreground);
 }
 
 .idea-3 strong {
-  padding: 3px 5px;
-  border-radius: 3px;
+  padding: 3px 6px;
+  border-radius: 0.5rem;
   display: inline-block;
+  background: var(--color-muted);
+  color: var(--color-primary);
 }
 
-.five .idea-5 {
-  font-size: 4rem;
-}
+.five .idea-5 { font-size: 4rem; color: var(--color-primary); }
 
 .idea-5 span,
 .idea-6 span,
-.wish-hbd span {
-  display: inline-block;
-}
+.wish-hbd span { display: inline-block; }
 
-.idea-6 span {
-  font-size: 15rem;
-}
+.idea-6 span { font-size: 15rem; color: var(--color-accent); }
 
-.six {
-  position: relative;
-}
+/* image block stays neutral but uses rounded corners */
+.six { position: relative; }
+.six img { display: inline-block; max-width: 100%; height: auto; border-radius: 1rem; }
 
-.six img {
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
-}
-
+/* party hat alignment unchanged, scale radius to theme */
 .six .hat {
   position: absolute;
   width: 80px;
   top: -35px;
   left: 41.5%;
-  /* transform: scale(0.1); */
 }
 
-.baloons img {
-  display: inline-block;
-  position: absolute;
-}
+/* balloons: keep layout, unify palette to brand */
+.baloons img { display: inline-block; position: absolute; }
+.baloons img:nth-child(even) { left: -10%; }
+.baloons img:nth-child(odd) { right: -10%; }
+.baloons img:nth-child(3n + 0) { left: 30%; }
 
-.baloons img:nth-child(even) {
-  left: -10%;
-}
-
-.baloons img:nth-child(odd) {
-  right: -10%;
-}
-
-.baloons img:nth-child(3n + 0) {
-  left: 30%;
-}
-
+/* confetti: use primary/accent and subtle tints */
 .eight svg {
   width: 25px;
   position: absolute;
@@ -156,144 +144,64 @@ body {
   z-index: -1;
 }
 
-.eight svg:nth-child(1) {
-  top: 7vh;
-  left: 5vw;
-  fill: #bd6ecf;
-}
-
-.eight svg:nth-child(2) {
-  top: 23vh;
-  left: 35vw;
-  fill: #7dd175;
-}
-
-.eight svg:nth-child(3) {
-  top: 33vh;
-  left: 23vw;
-  fill: #349d8b;
-}
-
-.eight svg:nth-child(4) {
-  top: 43vh;
-  left: 57vw;
-  fill: #347a9d;
-}
-
-.eight svg:nth-child(5) {
-  top: 68vh;
-  left: 7vw;
-  fill: #c66053;
-}
-
-.eight svg:nth-child(6) {
-  top: 42vh;
-  left: 77vw;
-  fill: #bfaa40;
-}
-
-.eight svg:nth-child(7) {
-  top: 68vh;
-  left: 83vw;
-  fill: #e3bae8;
-}
-
-.eight svg:nth-child(8) {
-  top: 86vh;
-  left: 37vw;
-  fill: #8762cb;
-}
-
-.eight svg:nth-child(9) {
-  top: 94vh;
-  left: 87vw;
-  fill: #9a90da;
-}
+/* alternate fills between primary/accent and soft variations */
+.eight svg:nth-child(1)  { top: 7vh;  left: 5vw;  fill: var(--color-accent); }
+.eight svg:nth-child(2)  { top: 23vh; left: 35vw; fill: var(--color-primary); }
+.eight svg:nth-child(3)  { top: 33vh; left: 23vw; fill: color-mix(in oklab, var(--color-primary) 70%, white); }
+.eight svg:nth-child(4)  { top: 43vh; left: 57vw; fill: color-mix(in oklab, var(--color-accent) 70%, white); }
+.eight svg:nth-child(5)  { top: 68vh; left: 7vw;  fill: var(--color-primary); }
+.eight svg:nth-child(6)  { top: 42vh; left: 77vw; fill: color-mix(in oklab, var(--color-primary) 55%, white); }
+.eight svg:nth-child(7)  { top: 68vh; left: 83vw; fill: var(--color-accent); }
+.eight svg:nth-child(8)  { top: 86vh; left: 37vw; fill: color-mix(in oklab, var(--color-accent) 55%, white); }
+.eight svg:nth-child(9)  { top: 94vh; left: 87vw; fill: color-mix(in oklab, var(--color-primary) 40%, white); }
 
 .wish-hbd {
   font-size: 3em;
   margin: 0;
   text-transform: uppercase;
+  color: var(--color-primary);
 }
 
 .wish h5 {
   font-weight: lighter;
   font-size: 2rem;
   margin: 10px 0 0;
+  color: var(--color-foreground);
 }
 
 .nine p {
   font-size: 2rem;
   font-weight: lighter;
+  color: var(--color-foreground);
 }
 
-#replay {
-  z-index: 3;
-  cursor: pointer;
-}
+#replay { z-index: 3; cursor: pointer; }
 
-/* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
-  }
-}
+/* =========================
+   Media Queries
+   ========================= */
+@media screen and (max-height: 1000px) { .six .hat { left: 40%; } }
+@media screen and (max-height: 800px)  { .six .hat { left: 37%; } }
+@media screen and (max-height: 700px)  { .six .hat { left: 32%; } }
+@media screen and (max-height: 850px) and (max-width: 450px) { .six .hat { left: 32%; } }
 
 @media screen and (max-width: 500px) {
-  .container {
-    width: 90%;
-  }
+  .container { width: 90%; border-radius: var(--radius-xxl); }
 
-  .four .text-box {
-    width: 90%;
-  }
+  .four .text-box { width: 90%; border-radius: var(--radius-xxl); }
 
   .text-box .fake-btn {
     right: 5px;
     bottom: -38px;
+    border-radius: 0.5rem;
   }
 
-  .idea-5 span {
-    display: block;
-  }
+  .idea-5 span { display: block; }
+  .idea-6 span { font-size: 10rem; color: var(--color-accent); }
 
-  .idea-6 span {
-    font-size: 10rem;
-  }
+  .six .hat { width: 50px; top: -20px; }
 
-  .six .hat {
-    width: 50px;
-    top: -20px;
-  }
-
-  .wish-hbd {
-    font-size: 2.2em;
-  }
-
-  .wish h5 {
-    font-size: 1.4rem;
-  }
-
-  .nine p {
-    font-size: 1.5rem;
-    font-weight: lighter;
-  }
+  .wish-hbd { font-size: 2.2em; }
+  .wish h5 { font-size: 1.4rem; }
+  .nine p  { font-size: 1.5rem; font-weight: lighter; }
 }
