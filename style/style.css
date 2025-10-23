@@ -2,11 +2,11 @@
    AllBoothNeng Theme Tokens
    ========================= */
 :root {
-  --color-bg:        #f6f6f9;
-  --color-foreground:#f6f6f9;
+  --color-bg:        #ffffff;
+  --color-foreground:#1f2937;
   --color-primary:   #8276a3; /* lilac */
   --color-accent:    #d8b4fe; /* pastel purple */
-  --color-card:      #f6f6f9;
+  --color-card:      #ffffff;
   --color-muted:     #f6f6f9;
 
   --border-muted:    #e7e5ef; /* subtle lilac-tinted border */
